@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+
+PKG=protobuf2.4.1
+VER=2.4.1
+
+%:
+	dh $@
+
+build:
+	./configure
+	make
+	make install
+
+#override_dh_auto_install:
+#	dh_auto_install
+    #HOLDOVER FROM PINDEL
+	#echo "copy files now!"
+	#mkdir -p ${DEB_DIR}/usr/lib/${PKG}/bin
+	#mkdir -p ${DEB_DIR}/usr/bin
+	#for filename in 'pindel' 'pindel-debug' 'pindel2vcf' 'sam2pindel'; do \
+#		install -m755 src/$${filename} ${DEB_DIR}/usr/lib/${PKG}/bin/$${filename}; \
+#		echo "export PATH=/usr/lib/${PKG}/bin/:\$$PATH; exec $$filename" >  ${DEB_DIR}/usr/bin/$${filename}${VER}; \
+#		done
+
+
+
+#override_dh_auto_test:
+#	echo "This version had no test/ subdirectory.  Skipping tests"
